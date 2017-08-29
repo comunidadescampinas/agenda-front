@@ -3,7 +3,7 @@ import React from 'react'
 import moment from 'moment'
 
 function formatDate (time) {
-  return moment().format('DD/MM/YYYY hh:mm:ss')
+  return moment(time).format('DD/MM/YYYY hh:mm:ss')
 }
 
 export const Evento = ({ info, comunidade, local }) => (
