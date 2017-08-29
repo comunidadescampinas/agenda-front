@@ -6,9 +6,7 @@ function formatDate (time) {
   return moment(time).format('DD/MM/YYYY hh:mm:ss')
 }
 
-export const Evento = ({ info, comunidade, local }) => (
-  console.log(info)
-  console.log(comunidade)
+export const Evento = ({ info, comunidade, local }) => (  
   console.log(comunidade[info.group])
   <div>
     <strong>{info.name}</strong><br/>
