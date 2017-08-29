@@ -38,7 +38,7 @@ export class ListaEventos extends PureComponent {
       return <div>Nenhum evento programado!</div>
     }
 
-    const { eventos, comunidades, locais } = this.state.eventos.entities
+    const { eventos } = this.state.eventos.entities
     const listaEventos = this.state.eventos.result.map(eventoId => {
       const info = eventos[eventoId]
       return <Evento info={info}/>
