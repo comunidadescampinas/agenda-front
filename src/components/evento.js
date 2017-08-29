@@ -7,9 +7,9 @@ function formatDate (time) {
 }
 
 export const Evento = ({ info, comunidade, local }) => (
-  console.log(info);
-  console.log(comunidade);
-  console.log(comunidade[info.group]);
+  console.log(info)
+  console.log(comunidade)
+  console.log(comunidade[info.group])
   <div>
     <strong>{info.name}</strong><br/>
     <ul>
