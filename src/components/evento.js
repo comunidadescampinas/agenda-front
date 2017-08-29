@@ -7,8 +7,7 @@ function formatDate (time) {
 }
 
 export const Evento = ({ info, comunidade, local }) => (
-  <div>    
-    {/* <p>Nome do grupo: {comunidade[info.group]}</p> */}
+  <div>
     <strong>{info.name}</strong><br/>
     <ul>
       <li>Data: {formatDate(info.time)}</li>
