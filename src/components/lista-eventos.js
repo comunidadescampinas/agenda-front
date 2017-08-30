@@ -41,7 +41,6 @@ export class ListaEventos extends PureComponent {
     const { eventos } = this.state.eventos.entities
     const listaEventos = this.state.eventos.result
       .map(i => eventos[i])
-      .filter(i => !!i) // pq a API traz resultados undefined?
       .sort((a, b) => a.time - b.time)
 
     const renderEventos = listaEventos.map(info => {
