@@ -11,6 +11,7 @@ export const Evento = ({ info, comunidade, local }) => (
     <a href={info.link} target='_blank'>
       <strong>{info.name}</strong>
     </a><br/>
+    <small>por {comunidade.name}</small>
     <ul>
       <li>Data: {formatDate(info.time)}</li>
       <li>Pessoas confirmadas: {info.yes_rsvp_count}</li>
