@@ -1,6 +1,6 @@
 {
-  "short_name": "Comunidades Campinas",
-  "name": "Calendário unificado das Comunidades de Campinas",
+  "short_name": "Tech Agenda RMC",
+  "name": "Tech Agenda RMC",
   "icons": [
     {
       "src": "favicon.ico",
@@ -10,6 +10,6 @@
   ],
   "start_url": "./index.html",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "#ffffff",
+  "background_color": "#000000"
 }
