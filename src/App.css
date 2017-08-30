@@ -2,14 +2,13 @@
   position: fixed;
   background-color: #222;
   width: 100%;
-  padding: 10px;
   color: white;
   text-align: center;
 }
 
 .Container-eventos {
   padding: 20px;
-  padding-top: 100px;
+  padding-top: 90px;
 }
 
 @keyframes App-logo-spin {
