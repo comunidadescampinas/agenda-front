@@ -4,6 +4,8 @@ import Evento from './evento'
 
 export class ListaEventos extends PureComponent {
   state = {
+    comunidades: null,
+    locais: null,
     eventos: null,
     error: null
   }
@@ -11,14 +13,30 @@ export class ListaEventos extends PureComponent {
   componentDidMount () {
     fetch('https://comunidades-campinas.herokuapp.com/eventos')
       .then(res => res.json())
-      .then(eventos => {
-        this.setState({
-          eventos,
-          error: null
-        })
+      .then(res => {
+        if (res.status === 'success') {
+          const { comunidades, locais, eventos } = res.body.entities
+          this.setState({
+            comunidades,
+            locais,
+            eventos: res.body.result.map(i => eventos[i]).sort((a, b) => a - b),
+            error: null
+          })
+        } else {
+          const error = res.message
+          this.setState({
+            error,
+            comunidades: null,
+            locais: null,
+            eventos: null
+          })
+          console.error(error)
+        }
       }, error => {
         this.setState({
           error,
+          comunidades: null,
+          locais: null,
           eventos: null
         })
         console.error(error)
@@ -34,20 +52,17 @@ export class ListaEventos extends PureComponent {
       return <div>Aguarde, carregando...</div>
     }
 
-    if (!this.state.eventos.result.length ){
+    if (!this.state.eventos.length ){
       return <div>Nenhum evento programado!</div>
     }
 
-    const { eventos } = this.state.eventos.entities
-    const listaEventos = this.state.eventos.result
-      .map(i => eventos[i])
-      .sort((a, b) => a.time - b.time)
+    const { eventos } = this.state
 
-    const renderEventos = listaEventos.map(info => {
+    const listaEventos = eventos.map(info => {
       return <Evento key={info.id} info={info}/>
     })
 
-    return <div>{renderEventos}</div>
+    return <div>{listaEventos}</div>
   }
 }
 
