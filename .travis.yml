@@ -7,4 +7,4 @@ deploy:
   provider: surge
   skip_cleanup: true
   project: ./build/
-  domain: comunidades-campinas.surge.sh
+  domain: https://comunidades-campinas.surge.sh
