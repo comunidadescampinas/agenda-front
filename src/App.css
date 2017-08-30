@@ -14,3 +14,13 @@ body {
   padding: 20px;
   padding-top: 90px;
 }
+
+a {
+  color: #002366;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #27408B;
+  text-decoration: underline;
+}

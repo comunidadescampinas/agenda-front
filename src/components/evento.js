@@ -8,7 +8,9 @@ function formatDate (time) {
 
 export const Evento = ({ info, comunidade, local }) => (
   <div>
-    <strong>{info.name}</strong><br/>
+    <a href={info.link} target='_blank'>
+      <strong>{info.name}</strong>
+    </a><br/>
     <ul>
       <li>Data: {formatDate(info.time)}</li>
       <li>Pessoas confirmadas: {info.yes_rsvp_count}</li>
