@@ -11,7 +11,7 @@ export class ListaEventos extends PureComponent {
   }
 
   componentDidMount () {
-    fetch('https://comunidades-campinas.herokuapp.com/eventos')
+    fetch('https://agendatechrmc.herokuapp.com/eventos')
       .then(res => res.json())
       .then(res => {
         if (res.status === 'success') {
