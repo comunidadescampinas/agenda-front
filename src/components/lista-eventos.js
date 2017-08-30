@@ -19,7 +19,7 @@ export class ListaEventos extends PureComponent {
           this.setState({
             comunidades,
             locais,
-            eventos: res.body.result.map(i => eventos[i]).sort((a, b) => a - b),
+            eventos: res.body.result.map(i => eventos[i]).sort((a, b) => a.time - b.time),
             error: null
           })
         } else {
