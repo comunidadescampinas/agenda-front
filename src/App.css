@@ -1,12 +1,15 @@
 .App-header {
+  position: fixed;
   background-color: #222;
-  padding: 20px;
+  width: 100%;
+  padding: 10px;
   color: white;
   text-align: center;
 }
 
 .Container-eventos {
-  padding: 30px;
+  padding: 20px;
+  padding-top: 100px;
 }
 
 @keyframes App-logo-spin {
