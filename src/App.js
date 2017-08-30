@@ -8,7 +8,7 @@ class App extends Component {
     return (
       <div className="App">
         <div className="App-header">
-          <h2>Comunidades Campinas</h2>
+          <h2>Tech Agenda RMC</h2>
         </div>
         <div className="Container-eventos">
           <ListaEventos/>
