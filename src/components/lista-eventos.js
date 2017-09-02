@@ -2,6 +2,10 @@
 import React, { PureComponent } from 'react'
 import moment from 'moment'
 
+/* Styles */
+import { CircularProgress } from 'material-ui/Progress'
+import Typography from 'material-ui/Typography'
+
 /* Dependencies */
 import MesEventos from './mes-eventos'
 
@@ -53,7 +57,14 @@ export class ListaEventos extends PureComponent {
     }
 
     if (!this.state.eventos) {
-      return <div>Aguarde, carregando...</div>
+      return (
+        <div style={{ margin: '1em', textAlign: 'center' }}>
+          <CircularProgress/><br/>
+          <Typography type='body1'>
+            Aguarde, carregando...
+          </Typography>
+        </div>
+      )
     }
 
     if (!this.state.eventos.length ){
@@ -81,11 +92,7 @@ export class ListaEventos extends PureComponent {
       return <MesEventos key={m.key} mes={mes} ano={ano} eventos={m.eventos} />
     })
 
-    return (
-      <div>
-        {mesesEventos}
-      </div>
-    )
+    return <div>{mesesEventos}</div>
   }
 }
 
