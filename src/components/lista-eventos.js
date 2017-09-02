@@ -1,7 +1,11 @@
+/* Libraries */
 import React, { PureComponent } from 'react'
+import moment from 'moment'
 
-import Evento from './evento'
+/* Dependencies */
+import MesEventos from './mes-eventos'
 
+/* Component */
 export class ListaEventos extends PureComponent {
   state = {
     comunidades: null,
@@ -19,7 +23,7 @@ export class ListaEventos extends PureComponent {
           this.setState({
             comunidades,
             locais,
-            eventos: res.body.result.map(i => eventos[i]).sort((a, b) => a.time - b.time),
+            eventos: res.body.result.map(i => eventos[i]),
             error: null
           })
         } else {
@@ -58,14 +62,38 @@ export class ListaEventos extends PureComponent {
 
     const { eventos, comunidades, locais } = this.state
 
-    const listaEventos = eventos.map(info => {
-      const c = comunidades[info.group]
-      const l = locais[info.venue]
-      return <Evento key={info.id} info={info} comunidade={c} local={l}/>
+    const meses = getListaMeses(eventos).map(key => ({
+      key,
+      eventos: eventos
+        .filter(ev => {
+          return moment(ev.time).format('MM/YYYY') === key
+        })
+        .sort((a, b) => a.time - b.time)
+        .map(ev => ({
+          info: ev,
+          comunidade: comunidades[ev.group],
+          local: locais[ev.venue]
+        }))
+    }))
+
+    const mesesEventos = meses.map(m => {
+      const [ mes, ano ] = m.key.split('/')
+      return <MesEventos key={m.key} mes={mes} ano={ano} eventos={m.eventos} />
     })
 
-    return <div>{listaEventos}</div>
+    return (
+      <div>
+        {mesesEventos}
+      </div>
+    )
   }
+}
+
+function getListaMeses (eventos) {
+  const meses = eventos
+    .sort((a, b) => a.time - b.time)
+    .map(i => moment(i.time).format('MM/YYYY'))
+  return [ ...new Set(meses) ]
 }
 
 export default ListaEventos

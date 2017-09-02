@@ -1,21 +1,30 @@
-import React, { Component } from 'react';
-import './App.css';
+/* Libraries */
+import React, { Component } from 'react'
 
+/* Styles */
+import AppBar from 'material-ui/AppBar'
+import Toolbar from 'material-ui/Toolbar'
+import Typography from 'material-ui/Typography'
+
+/* Dependencies */
 import ListaEventos from './components/lista-eventos'
 
+/* Component */
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <div className="App-header">
-          <h2>Agenda Tech RMC</h2>
-        </div>
-        <div className="Container-eventos">
-          <ListaEventos/>
-        </div>
+      <div>
+        <AppBar position='static' color='default'>
+          <Toolbar>
+            <Typography type='title'>
+              Agenda Tech RMC
+            </Typography>
+          </Toolbar>
+        </AppBar>
+        <ListaEventos/>
       </div>
-    );
+    )
   }
 }
 
-export default App;
+export default App
