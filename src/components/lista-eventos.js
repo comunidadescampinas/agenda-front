@@ -5,6 +5,8 @@ import moment from 'moment'
 /* Styles */
 import { CircularProgress } from 'material-ui/Progress'
 import Typography from 'material-ui/Typography'
+import Event from 'material-ui-icons/Event'
+import Error from 'material-ui-icons/Error'
 
 /* Dependencies */
 import MesEventos from './mes-eventos'
@@ -53,7 +55,14 @@ export class ListaEventos extends PureComponent {
 
   render () {
     if (this.state.error) {
-      return <div>Erro ao tentar carregar a lista de eventos!</div>
+      return (
+        <div style={{ margin: '1em', textAlign: 'center' }}>
+          <Error/>
+          <Typography type='body1'>
+            Erro ao tentar carregar a lista de eventos!
+          </Typography>
+        </div>
+      )
     }
 
     if (!this.state.eventos) {
@@ -68,7 +77,14 @@ export class ListaEventos extends PureComponent {
     }
 
     if (!this.state.eventos.length ){
-      return <div>Nenhum evento programado!</div>
+      return (
+        <div style={{ margin: '1em', textAlign: 'center' }}>
+          <Event/>
+          <Typography type='body1'>
+            Nenhum evento programado!
+          </Typography>
+        </div>
+      )
     }
 
     const { eventos, comunidades, locais } = this.state
