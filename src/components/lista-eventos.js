@@ -11,6 +11,15 @@ import Error from 'material-ui-icons/Error'
 /* Dependencies */
 import MesEventos from './mes-eventos'
 
+const Alert = ({ heading, text }) => (
+  <div style={{ margin: '1em', textAlign: 'center' }}>
+    {heading}<br/>
+    <Typography type='body1'>
+      {text}
+    </Typography>
+  </div>
+)
+
 /* Component */
 export class ListaEventos extends PureComponent {
   state = {
@@ -55,36 +64,24 @@ export class ListaEventos extends PureComponent {
 
   render () {
     if (this.state.error) {
-      return (
-        <div style={{ margin: '1em', textAlign: 'center' }}>
-          <Error/>
-          <Typography type='body1'>
-            Erro ao tentar carregar a lista de eventos!
-          </Typography>
-        </div>
-      )
+      return <Alert
+        heading={<Error/>}
+        text='Erro ao tentar carregar a lista de eventos!'
+      />
     }
 
     if (!this.state.eventos) {
-      return (
-        <div style={{ margin: '1em', textAlign: 'center' }}>
-          <CircularProgress/><br/>
-          <Typography type='body1'>
-            Aguarde, carregando...
-          </Typography>
-        </div>
-      )
+      return <Alert
+        heading={<CircularProgress/>}
+        text='Aguarde, carregando...'
+      />
     }
 
-    if (!this.state.eventos.length ){
-      return (
-        <div style={{ margin: '1em', textAlign: 'center' }}>
-          <Event/>
-          <Typography type='body1'>
-            Nenhum evento programado!
-          </Typography>
-        </div>
-      )
+    if (!this.state.eventos.length) {
+      return <Alert
+        heading={<Event/>}
+        text='Nenhum evento programado!'
+      />
     }
 
     const { eventos, comunidades, locais } = this.state
