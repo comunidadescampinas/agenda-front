@@ -1,33 +1,29 @@
+/* Libraries */
 import React from 'react'
-
 import moment from 'moment'
+import 'moment/locale/pt-br'
 
-function formatDate (time) {
-  return moment(time).format('DD/MM/YYYY HH:mm')
+/* Styles */
+import { ListItem, ListItemText } from 'material-ui/List'
+import Avatar from 'material-ui/Avatar'
+
+/* Component */
+export const Evento = ({ info, comunidade, local }) => {
+  const day = moment(info.time).format('D')
+  const time = moment(info.time).format('dddd, HH:mm')
+  const description = `${time} por ${comunidade.name}`
+
+  return (
+    <ListItem button onClick={() => window.open(info.link, '_blank')}>
+      <Avatar>
+        {day}
+      </Avatar>
+      <ListItemText
+        primary={info.name}
+        secondary={description}
+      />
+    </ListItem>
+  )
 }
-
-const Local = ({ local }) => {
-  if (!local) {
-    return <span>N/A</span>
-  }
-  const { name, lat, lon } = local
-  const url = `https://www.google.com.br/maps/@${lat},${lon},15z?hl=pt-BR`
-  return <a href={url} target='_blank'>{name}</a>
-}
-
-export const Evento = ({ info, comunidade, local }) => (
-  <div>
-    <a href={info.link} target='_blank'>
-      <strong>{info.name}</strong>
-    </a><br/>
-    <small>por {comunidade.name}</small>
-    <ul>
-      <li>Data: {formatDate(info.time)}</li>
-      <li>Local: <Local local={local}/></li>
-      <li>Pessoas confirmadas: {info.yes_rsvp_count}</li>
-      <li>Vagas: {info.rsvp_limit}</li>
-    </ul>
-  </div>
-)
 
 export default Evento
