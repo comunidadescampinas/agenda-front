@@ -4,7 +4,6 @@ import React from 'react'
 /* Styles */
 import Card, { CardContent } from 'material-ui/Card'
 import Typography from 'material-ui/Typography'
-import { withStyles } from 'material-ui/styles'
 
 /* Dependencies */
 import Evento from './evento'
