@@ -8,13 +8,17 @@ import Typography from 'material-ui/Typography'
 /* Dependencies */
 import Evento from './evento'
 
+/* Helper */
+const meses = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
+const nomeDoMes = mes => meses[mes - 1];
+
 /* Component */
 export const MesEventos = ({ mes, ano, eventos }) => (
   <div>
     <Card>
       <CardContent>
         <Typography type='headline'>
-          {mes}/{ano}
+          {nomeDoMes(mes)} de {ano}
         </Typography>
       </CardContent>
     </Card>
