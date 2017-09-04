@@ -4,17 +4,27 @@ import React from 'react'
 /* Styles */
 import Card, { CardContent } from 'material-ui/Card'
 import Typography from 'material-ui/Typography'
+import { withStyles } from 'material-ui/styles'
 
 /* Dependencies */
 import Evento from './evento'
+
+/* Helper */
+const meses = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
+const nomeDoMes = mes => meses[mes - 1];
+
+/* Custom Styles */
+const customStyles = {
+  paddingBottom: 16
+}
 
 /* Component */
 export const MesEventos = ({ mes, ano, eventos }) => (
   <div>
     <Card>
-      <CardContent>
+      <CardContent style={customStyles}>
         <Typography type='headline'>
-          {mes}/{ano}
+          {nomeDoMes(mes)} de {ano}
         </Typography>
       </CardContent>
     </Card>
